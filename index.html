@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello I'm Sia</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f6f8fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello, I’m Sia!</h1>
+    <button id="btn">Click Me</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const colors = ['#007bff', '#e63946', '#2a9d8f', '#f4a261', '#6a4c93'];
+    btn.addEventListener('click', () => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      btn.style.backgroundColor = randomColor;
+    });
+  </script>
+</body>
+</html>
