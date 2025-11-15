@@ -15,9 +15,11 @@
       --bg-gradient: linear-gradient(135deg, #0f172a, #1d4ed8, #22c55e);
       --card-bg: rgba(15, 23, 42, 0.9);
       --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.2);
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --radius-lg: 20px;
+      --radius-md: 14px;
     }
 
     * {
@@ -33,38 +35,66 @@
       background-attachment: fixed;
       color: var(--text-main);
       display: flex;
-      align-items: center;
       justify-content: center;
       padding: 24px;
     }
 
-    .page {
-      max-width: 960px;
-      width: 100%;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-      padding: 32px 24px 28px;
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      overflow: hidden;
-    }
-
     @media (min-width: 768px) {
-      .card {
-        padding: 40px 40px 32px;
+      body {
+        padding: 40px;
       }
     }
 
+    .page {
+      max-width: 1040px;
+      width: 100%;
+    }
+
+    .shell {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      padding: 24px 18px 22px;
+      backdrop-filter: blur(18px);
+    }
+
+    @media (min-width: 768px) {
+      .shell {
+        padding: 32px 32px 26px;
+      }
+    }
+
+    /* Top nav (simple anchors inside the card) */
+    .top-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.16s ease;
+    }
+
+    .top-nav a:hover {
+      border-color: rgba(148, 163, 184, 0.7);
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* Hero */
     .hero {
       display: grid;
-      gap: 16px;
-      animation: fadeInUp 0.8s ease-out forwards;
-      opacity: 0;
-      transform: translateY(16px);
+      gap: 14px;
+      margin-bottom: 22px;
     }
 
     .badge {
@@ -85,7 +115,7 @@
       height: 8px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
     h1 {
@@ -99,13 +129,13 @@
       color: transparent;
     }
 
-    .subtitle {
+    .hero-subtitle {
       font-size: 14px;
       color: var(--text-muted);
-      max-width: 520px;
+      max-width: 600px;
     }
 
-    .subtitle strong {
+    .hero-subtitle strong {
       color: #e5e7eb;
       font-weight: 500;
     }
@@ -114,63 +144,74 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
-    .btn-primary {
-      border: none;
-      border-radius: 999px;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      color: white;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.45);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: #fff;
+      font-weight: 500;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.5);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 22px 45px rgba(37, 99, 235, 0.6);
-      filter: brightness(1.04);
+      box-shadow: 0 22px 45px rgba(37, 99, 235, 0.7);
+      filter: brightness(1.05);
     }
 
     .btn-secondary {
-      border-radius: 999px;
-      padding: 9px 18px;
+      padding: 9px 16px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.8);
       color: var(--text-main);
-      font-size: 13px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
     }
 
     .btn-secondary:hover {
-      background: rgba(30, 64, 175, 0.55);
+      background: rgba(30, 64, 175, 0.6);
       border-color: #60a5fa;
       transform: translateY(-1px);
     }
 
-    .content-grid {
-      display: grid;
-      gap: 24px;
-      margin-top: 30px;
+    /* Positioning strip */
+    .positioning {
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 680px;
+      line-height: 1.6;
     }
 
-    @media (min-width: 768px) {
-      .content-grid {
-        grid-template-columns: 1.6fr 1.2fr;
-        gap: 32px;
-        align-items: start;
-      }
+    .positioning strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Section headings */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      gap: 8px;
     }
 
     .section-title {
@@ -178,20 +219,135 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--text-muted);
-      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Work grid */
+    .work-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .work-card {
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent),
+        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent),
+        rgba(15, 23, 42, 0.93);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      border-color: var(--accent);
+    }
+
+    .work-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .work-description {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    /* Experience */
+    .timeline {
+      border-left: 1px solid rgba(75, 85, 99, 0.9);
+      margin-top: 4px;
+      padding-left: 16px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 8px 0 10px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -9px;
+      top: 14px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-soft);
+    }
+
+    .timeline-role {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* About */
+    .about-body {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .about-body {
+        grid-template-columns: 1.5fr 1.2fr;
+      }
     }
 
     .about-text {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
       line-height: 1.6;
-      margin-bottom: 10px;
     }
 
     .about-list {
       list-style: none;
-      padding-left: 0;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-main);
     }
 
@@ -202,49 +358,76 @@
       margin-bottom: 6px;
     }
 
-    .about-list span.bullet {
-      font-size: 16px;
+    .about-bullet {
+      font-size: 15px;
       line-height: 1;
       margin-top: 1px;
     }
 
-    .side-panel {
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent),
-                  radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent),
-                  rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+    .about-panel {
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.22), transparent),
+        rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 12px 14px 10px;
       font-size: 12px;
       color: var(--text-muted);
     }
 
-    .tag-row {
+    .about-panel-title {
+      font-size: 12px;
+      color: #e5e7eb;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--text-main);
-      background: rgba(15, 23, 42, 0.8);
-      white-space: nowrap;
-    }
-
-    .footer-note {
-      margin-top: 20px;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
       font-size: 11px;
       color: var(--text-muted);
-      text-align: right;
-      opacity: 0.9;
     }
 
-    @keyframes fadeInUp {
+    .footer-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Smooth in animation */
+    .hero,
+    .positioning,
+    .section {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+
+    .hero { animation-delay: 0.05s; }
+    .positioning { animation-delay: 0.15s; }
+    .section:nth-of-type(1) { animation-delay: 0.25s; }
+    .section:nth-of-type(2) { animation-delay: 0.35s; }
+    .section:nth-of-type(3) { animation-delay: 0.45s; }
+
+    @keyframes fadeUp {
       to {
         opacity: 1;
         transform: translateY(0);
@@ -254,88 +437,252 @@
 </head>
 <body>
   <main class="page">
-    <section class="card">
-      <header class="hero">
+    <div class="shell">
+      <nav class="top-nav">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <header class="hero" id="top">
         <div class="badge">
           <span class="badge-dot"></span>
-          Building digital experiences that ship
+          Building products that ship
         </div>
 
         <h1>Hi, I’m <span>Sayali</span> 👋</h1>
 
-        <p class="subtitle">
-          <strong>Director of Product</strong> focused on <strong>digital health</strong>, 
-          super apps, and AI-powered experiences — taking products from zero to one and then to scale.
+        <p class="hero-subtitle">
+          <strong>Director of Product · Digital Health & Super Apps</strong>
+        </p>
+
+        <p class="hero-subtitle">
+          I build 0→1 AI-powered health and super-app experiences for millions of users. Over
+          <strong>8+ years</strong>, I’ve worked across B2B SaaS, telecom, loyalty, AI health, and
+          high-scale consumer products.
         </p>
 
         <div class="hero-actions">
-          <button id="cta-button" class="btn-primary">
-            View my work
-            <span>↓</span>
+          <button class="btn btn-primary" data-scroll-target="#work">
+            View my work <span>↓</span>
           </button>
-
-          <button class="btn-secondary" id="scroll-contact">
-            Learn more about me
+          <button class="btn btn-secondary" data-scroll-target="#about">
+            About me
           </button>
         </div>
       </header>
 
-      <section class="content-grid" id="about">
-        <div>
-          <div class="section-title">About Me</div>
-          <p class="about-text">
-            I design and ship products that sit at the intersection of 
-            <strong>healthcare, entertainment, and everyday utilities</strong>.  
-            I love turning fuzzy problem statements into clear, shippable roadmaps.
-          </p>
-
-          <ul class="about-list">
-            <li>
-              <span class="bullet">🎯</span>
-              <span>Director of Product at Jio, leading digital health & super-app experiences.</span>
-            </li>
-            <li>
-              <span class="bullet">🎾</span>
-              <span>National-level tennis player – I bring the same grit & discipline to product.</span>
-            </li>
-            <li>
-              <span class="bullet">🧠</span>
-              <span>Obsessed with learning, second-order thinking, and building with AI.</span>
-            </li>
-          </ul>
-        </div>
-
-        <aside class="side-panel">
-          <div style="font-size: 12px; color: #e5e7eb; font-weight: 500;">
-            What I enjoy working on
-          </div>
-          <div class="tag-row">
-            <span class="tag">0 → 1 product builds</span>
-            <span class="tag">AI-powered health</span>
-            <span class="tag">Super app journeys</span>
-            <span class="tag">Incentives & loyalty</span>
-            <span class="tag">Experimentation & GTM</span>
-          </div>
-        </aside>
+      <section class="positioning">
+        I specialize in turning ambiguous problem spaces into <strong>shippable, scalable
+        products</strong> — from enterprise voucher platforms and procurement workflows to
+        <strong>AI-driven health insights</strong> and super-app monetization journeys. My work blends
+        systems thinking, execution discipline, and a strong bias towards impact.
       </section>
 
-      <div class="footer-note">
-        v0 · Built with ♥, Codex, and curiosity.
-      </div>
-    </section>
+      <!-- Selected Work -->
+      <section class="section" id="work">
+        <div class="section-header">
+          <div class="section-title">Selected Work</div>
+          <div class="section-subtitle">A snapshot of the 0→1 builds and platforms I’ve led.</div>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-title">ShakePe — Enterprise Voucher Platform (0→1)</div>
+            <p class="work-description">
+              Launched a B2B rewards platform for enterprise clients; evolved into the primary revenue
+              driver for ShakeDeal, now contributing ~55% of topline.
+            </p>
+            <div class="tag-row">
+              <span class="tag">0→1 build</span>
+              <span class="tag">B2B SaaS</span>
+              <span class="tag">Commerce</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-title">Enterprise Catalogs & PO Automation</div>
+            <p class="work-description">
+              Designed client-specific catalogs and automated PO ingestion, reducing manual effort and
+              delivering ~10% OPEX savings for enterprise procurement teams.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Platform</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Cost efficiency</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-title">Prime Friday Loyalty — MyJio</div>
+            <p class="work-description">
+              Built and scaled a weekly loyalty engine inside MyJio, driving repeat usage and engagement
+              across a 150M+ MAU base.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Loyalty</span>
+              <span class="tag">Growth</span>
+              <span class="tag">Super app</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-title">Smart Reports — AI Health Insights (0→1)</div>
+            <p class="work-description">
+              Created an AI-powered layer on top of lab reports to surface risk markers, explain results
+              in plain language, and drive retests and follow-ups in JioHealthHub.
+            </p>
+            <div class="tag-row">
+              <span class="tag">AI</span>
+              <span class="tag">HealthTech</span>
+              <span class="tag">0→1</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-title">Cashify Device Exchange — MyJio</div>
+            <p class="work-description">
+              Designed the complete device exchange journey — diagnostics, valuation, and voucher-based
+              redemption — integrated within the MyJio ecosystem.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Commerce</span>
+              <span class="tag">Diagnostics</span>
+              <span class="tag">UX flows</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-title">NMACC & Jio World Centre Websites</div>
+            <p class="work-description">
+              Took over unstable marketing sites, migrated them to Strapi, rebuilt CMS workflows, and
+              improved reliability and observability for key cultural properties.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Platform</span>
+              <span class="tag">CMS</span>
+              <span class="tag">Reliability</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="section" id="experience">
+        <div class="section-header">
+          <div class="section-title">Experience</div>
+          <div class="section-subtitle">8+ years across Jio and high-growth B2B SaaS.</div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-role">Director of Product · Jio</div>
+            <div class="timeline-meta">2024 – Present · Digital Health & MyJio Entertainment</div>
+            <div class="timeline-desc">
+              Leading AI health experiences (Smart Reports), health records (Health Locker), offers and
+              monetization journeys, entertainment integrations, and platform reliability.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-role">Product Manager / Sr PM · ShakeDeal</div>
+            <div class="timeline-meta">2019 – 2023 · B2B procurement & rewards</div>
+            <div class="timeline-desc">
+              Owned ShakePe, enterprise catalogs, eSourcing, logistics automation, and customer service
+              tooling — driving topline contribution, process automation, and CX wins.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-role">APM → Product Manager · Jio</div>
+            <div class="timeline-meta">2016 – 2019 · MyJio & partner products</div>
+            <div class="timeline-desc">
+              Worked on Prime Friday loyalty, accessibility, POS Lite expansion, JPW, safety flows, and
+              IPL campaigns during Jio’s hypergrowth phase.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section" id="about">
+        <div class="section-header">
+          <div class="section-title">About Me</div>
+          <div class="section-subtitle">A bit of context beyond the bullets.</div>
+        </div>
+
+        <div class="about-body">
+          <div>
+            <p class="about-text">
+              I’m a product leader who enjoys working at the intersection of <strong>health,
+              entertainment, and everyday utilities</strong>. I gravitate towards 0→1 builds, complex UX
+              flows, and problems that require both strategic thinking and hands-on execution.
+            </p>
+            <br />
+            <ul class="about-list">
+              <li>
+                <span class="about-bullet">🎯</span>
+                <span>Comfortable owning products end-to-end — from discovery and narrative, to delivery
+                and iteration.</span>
+              </li>
+              <li>
+                <span class="about-bullet">🎾</span>
+                <span>National-level tennis player — the discipline, grit, and competitiveness carry
+                directly into how I build products and lead teams.</span>
+              </li>
+              <li>
+                <span class="about-bullet">🧠</span>
+                <span>Deeply interested in second-order thinking, AI-assisted workflows, and building
+                systems that scale beyond individual heroics.</span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="about-panel">
+            <div class="about-panel-title">What I like working on</div>
+            <p>
+              0→1 product bets, AI-powered experiences, incentive and loyalty systems, super-app
+              journeys, and platforms that quietly power multiple use cases.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© 2025 Sayali Kabade</div>
+        <div class="footer-links">
+          <a href="mailto:sayali.kabade@gmail.com">Email</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span>· Built with curiosity & Codex</span>
+        </div>
+      </footer>
+    </div>
   </main>
 
   <script>
-    const cta = document.getElementById("cta-button");
-    const aboutSection = document.getElementById("about");
-    const scrollContact = document.getElementById("scroll-contact");
+    // Smooth scroll for nav + buttons
+    function smoothScrollTo(target) {
+      const el = document.querySelector(target);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
-    cta.addEventListener("click", () => {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
+    document.querySelectorAll("a[href^='#']").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        if (href && href !== "#") smoothScrollTo(href);
+      });
     });
 
-    scrollContact.addEventListener("click", () => {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
+    document.querySelectorAll("[data-scroll-target]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-scroll-target");
+        if (target) smoothScrollTo(target);
+      });
     });
   </script>
 </body>
